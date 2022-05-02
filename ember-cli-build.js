@@ -1,10 +1,28 @@
 'use strict';
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
+const nested = require('postcss-nested');
+const simpleVars = require('postcss-simple-vars')({ silent: true });
+const postcssScss = require('postcss-scss');
 
 module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
     // Add options here
+    'ember-bootstrap': {
+      whitelist: [],
+      bootstrapVersion: 5,
+      importBootstrapCSS: false,
+    },
+    cssModules: {
+      intermediateOutputPath: 'app/styles/_modules.scss',
+      extension: 'module.scss',
+      postCssOptions: {
+        syntax: postcssScss,
+      },
+      plugins: {
+        before: [simpleVars, nested],
+      },
+    },
   });
 
   // Use `app.import` to add additional libraries to the generated
