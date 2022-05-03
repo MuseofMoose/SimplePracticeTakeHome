@@ -1,0 +1,16 @@
+<div ...attributes>
+  <div class='card m-3'>
+    <div class='card-body'>
+      <h5 class='card-title' data-test-name>{{@location.name}}</h5>
+      <p class='card-text' data-test-phone>{{@location.phone}}</p>
+      <button
+        type='button'
+        class='btn btn-primary'
+        {{on 'click' (fn this.selectLocation @location)}}
+        data-test-select-button
+      >
+        {{t 'general.select'}}
+      </button>
+    </div>
+  </div>
+</div>

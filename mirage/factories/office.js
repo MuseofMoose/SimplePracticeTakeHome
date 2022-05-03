@@ -17,8 +17,10 @@ export default Factory.extend({
     return faker.datatype.boolean();
   },
 
-  name() {
-    return `${faker.address.county()} Therapy Center`;
+  name(i) {
+    return i % 2 === 0
+      ? `${faker.address.county()} Therapy Center`
+      : `${faker.company.companyName()} Counseling Center`;
   },
 
   phone() {

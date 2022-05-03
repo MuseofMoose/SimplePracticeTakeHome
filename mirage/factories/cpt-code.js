@@ -1,22 +1,22 @@
 import { Factory } from 'miragejs';
 import faker from 'faker';
-import ENV from 'sp-take-home/config/environment';
+import { capitalize } from '@ember/string';
 
 export default Factory.extend({
   callToBook() {
     return faker.datatype.boolean();
   },
 
-  cptCodeId() {
-    return ENV.APP.clinicianId;
+  cptCodeId(i) {
+    return i + 1;
   },
 
   description() {
-    return faker.lorem.words(3);
+    return `${capitalize(faker.random.word())} Therapy`;
   },
 
   duration() {
-    return faker.datatype.number(15, 50);
+    return faker.datatype.number({ min: 15, max: 50 });
   },
 
   rate() {

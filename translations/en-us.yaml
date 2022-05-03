@@ -2,4 +2,12 @@ pageTitles:
   application: Spencer Dellis - Take Home
   service: Service Selection
   location: Location Selection
-widgetHeader: Request an Appointment
+widgetHeader: Request an appointment
+practiceName: De Lis Therapy Center
+sideBarSteps:
+  service: 'Select Service'
+  location: 'Select Location'
+time:
+  minutes: Minutes
+general:
+  select: Select

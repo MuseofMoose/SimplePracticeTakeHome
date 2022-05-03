@@ -1,6 +1,11 @@
 @import 'ember-bootstrap/bootstrap';
+@import 'bootstrap-overrides/elements/cards';
 @import 'modules';
 
 html {
   font-size: 15px;
+}
+
+body {
+  background-color: #eaeaea;
 }

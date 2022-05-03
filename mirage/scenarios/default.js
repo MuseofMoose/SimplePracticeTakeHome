@@ -14,12 +14,12 @@ export default function (server) {
   const [serviceOne, serviceTwo, serviceThree, serviceFour, serviceFive] =
     server.createList('cpt-code', 5, { clinician: clinicianOne });
 
-  server.create('office', {
+  server.createList('office', 2, {
     clinician: clinicianOne,
     cptCodes: [serviceOne, serviceTwo, serviceThree],
   });
 
-  server.create('office', {
+  server.createList('office', 4, {
     clinician: clinicianOne,
     cptCodes: [serviceTwo, serviceThree, serviceFour],
   });

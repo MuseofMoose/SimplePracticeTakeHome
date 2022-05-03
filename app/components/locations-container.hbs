@@ -1,0 +1,10 @@
+<div class='row'>
+  {{#each @locations as |location|}}
+    {{!--
+      I'm not sure what a location's 'isPublic' property is for but I considered
+      conditionally rendering locations based on that value. Would be a trivial change
+      if necessary.
+     --}}
+    <LocationCard @location={{location}} class='col-sm-6 col-lg-4' data-test-location-card/>
+  {{/each}}
+</div>
