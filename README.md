@@ -9,7 +9,7 @@ Take home assignment for SimplePractice interview.
 
 ### App
 - Making it look less boring (particularly the side-bar).
-- Handling the browser back button. Clicking on the side bar to go back works but hitting back in your browser will take you to the previous route with resetting the state.
+- Handling the browser back button. Clicking on the side bar to go back works but hitting back in your browser will take you to the previous route without resetting the state.
 
 ## Prerequisites
 
