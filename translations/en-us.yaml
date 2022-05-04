@@ -5,8 +5,8 @@ pageTitles:
 widgetHeader: Request an appointment
 practiceName: De Lis Therapy Center
 sideBarSteps:
-  service: 'Select Service'
-  location: 'Select Location'
+  service: 'Select a Service'
+  location: 'Select a Location'
 time:
   minutes: Minutes
 general:

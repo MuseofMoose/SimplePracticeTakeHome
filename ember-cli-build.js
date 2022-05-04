@@ -23,6 +23,9 @@ module.exports = function (defaults) {
         before: [simpleVars, nested],
       },
     },
+    'ember-composable-helpers': {
+      only: ['inc'],
+    },
   });
 
   // Use `app.import` to add additional libraries to the generated

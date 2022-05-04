@@ -12,6 +12,7 @@ module('Integration | Component | service-card', function (hooks) {
 
   hooks.beforeEach(async function () {
     this.router = this.owner.lookup('service:router');
+    this.selectionProgress = this.owner.lookup('service:selection-progress');
     this.testCptCode = this.server.create('cpt-code');
     await render(hbs`<ServiceCard @service={{this.testCptCode}}/>`);
   });
@@ -34,8 +35,9 @@ module('Integration | Component | service-card', function (hooks) {
       .hasText(t('general.select'), 'should display a select button');
   });
 
-  test('clicking the select button routes you to the location page', async function (assert) {
+  test('clicking the select button performs the expected actions', async function (assert) {
     sinon.stub(this.router, 'transitionTo');
+    sinon.stub(this.selectionProgress, 'completeStep');
     await click('[data-test-select-button]');
 
     assert.strictEqual(
@@ -43,6 +45,7 @@ module('Integration | Component | service-card', function (hooks) {
       1,
       'calls transitionTo once'
     );
+
     const transitionToArgs = this.router.transitionTo.args[0];
     assert.strictEqual(
       transitionToArgs[0],
@@ -54,5 +57,12 @@ module('Integration | Component | service-card', function (hooks) {
       this.testCptCode.cptCodeId,
       'passes along the expected cptCodeId as a query param'
     );
+
+    const selectionProgressArgs = this.selectionProgress.completeStep.args[0];
+    const expectedDisplayValues = [
+      this.testCptCode.description,
+      `${this.testCptCode.duration} ${t('time.minutes')}`,
+    ];
+    assert.deepEqual(selectionProgressArgs[0], expectedDisplayValues);
   });
 });

@@ -30,5 +30,5 @@ module('Integration | Component | location-card', function (hooks) {
   });
 
   // Unimplemented as the next step was not required for this assignment
-  test.skip('clicking the select button routes you to the date page', function () {});
+  test.skip('clicking the select button performs the expected actions', function () {});
 });

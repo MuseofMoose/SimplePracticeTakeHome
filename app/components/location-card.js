@@ -6,8 +6,12 @@ export default class LocationCardComponent extends Component {
   @service router;
 
   @action selectLocation(/* location */) {
-    // TODO: Needs to store the selection and update the sidebar card somehow
-    // Transition to date selection route would go here. Something like:
-    // this.router.transitionTo('date');
+    // Unimplemented as the next step was not required for this assignment
+    //
+    // const displayValues = [location.name, location.phone];
+    // this.selectionProgress.completeStep('location', displayValues);
+    // this.router.transitionTo('location', {s
+    //   queryParams: { cptCodeId: service.cptCodeId },
+    // });
   }
 }
