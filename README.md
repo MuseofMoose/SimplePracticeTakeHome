@@ -2,6 +2,15 @@
 
 Take home assignment for SimplePractice interview.
 
+## Some notable omissions from this assignment (due to time constraints):
+### Testing
+- An acceptance test to cover the entire app flow.
+- Integration tests for the progress-side-bar component.
+
+### App
+- Making it look less boring (particularly the side-bar).
+- Handling the browser back button. Clicking on the side bar to go back works but hitting back in your browser will take you to the previous route with resetting the state.
+
 ## Prerequisites
 
 You will need the following things properly installed on your computer.

@@ -31,17 +31,22 @@ module('Unit | Service | selection-progress', function (hooks) {
 
   test('goToStep()', function () {
     sinon.stub(this.router, 'transitionTo');
+    sinon.stub(this.service.steps[0], 'resetStep');
+    sinon.stub(this.service.steps[1], 'resetStep');
     this.service.completeStep(['potato']); // Advancing a step;
     this.service.goToStep(0);
 
-    assert.false(
-      this.service.steps[1].isActive,
-      'previous step should no longer be active'
+    assert.strictEqual(
+      this.service.steps[0].resetStep.callCount,
+      1,
+      'should call resetStep on the targeted step'
     );
-    assert.false(
-      this.service.steps[1].isComplete,
-      'previous step should no longer be complete'
+    assert.strictEqual(
+      this.service.steps[1].resetStep.callCount,
+      1,
+      'should call resetStep on the previous step'
     );
+
     assert.true(
       this.service.steps[0].isActive,
       'targeted step should be active'
@@ -84,7 +89,7 @@ module('Unit | Service | selection-progress', function (hooks) {
       );
     });
 
-    test('completeStep() performs expected operations', function (assert) {
+    test('completeStep()', function (assert) {
       const progressStep = new ProgressStep('potato');
       const displayValues = ['chicken', 'horse'];
       progressStep.completeStep(displayValues);
@@ -96,6 +101,21 @@ module('Unit | Service | selection-progress', function (hooks) {
       );
       assert.true(progressStep.isComplete, 'should set isComplete to true');
       assert.false(progressStep.isActive, 'should set isActive to false');
+    });
+
+    test('resetStep()', function (assert) {
+      const progressStep = new ProgressStep('potato');
+      const displayValues = ['chicken', 'horse'];
+      progressStep.completeStep(displayValues);
+      progressStep.resetStep();
+
+      assert.deepEqual(
+        progressStep.displayValues,
+        [],
+        'should reset displayValues'
+      );
+      assert.false(progressStep.isActive, 'should set isActive to false');
+      assert.false(progressStep.isComplete, 'should set isComplete to false');
     });
 
     test('stepClasses() correctly computes value', function (assert) {

@@ -1,0 +1,38 @@
+.steps-container {
+  padding: 2rem;
+
+  .step {
+    margin-bottom: 0.5rem;
+    opacity: 0.35;
+
+    &.complete {
+      opacity: 0.7;
+    }
+
+    &.active {
+      opacity: 1;
+
+      :global(.number-bullet) {
+        border-color: $primary;
+        color: $primary;
+      }
+    }
+
+    .header {
+      font-weight: 500;
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+
+      .title {
+        margin-left: 0.25rem;
+      }
+    }
+
+
+    .display-values {
+      margin-left: 2rem;
+      color: $primary;
+      margin-bottom: 0.25rem;
+    }
+  }
+}

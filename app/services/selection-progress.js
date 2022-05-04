@@ -30,6 +30,12 @@ export class ProgressStep {
     this.isComplete = true;
     this.isActive = false;
   }
+
+  resetStep() {
+    this.isComplete = false;
+    this.isActive = false;
+    this.displayValues.clear();
+  }
 }
 
 /*
@@ -59,9 +65,9 @@ export default class SelectionProgressService extends Service {
     // you could imagine walking through the steps between the current index and the targeted index
     // and reset them all so they aren't active or complete any more. Or perhaps you let the user
     // jump around between steps they've completed without resetting progress.
-    this.steps[this.activeStepIndex].isActive = false;
-    this.steps[this.activeStepIndex].isComplete = false;
+    this.steps[this.activeStepIndex].resetStep();
     this.router.transitionTo(this.steps[stepIndex].route);
+    this.steps[stepIndex].resetStep();
     this.#setActive(stepIndex);
   }
 

@@ -1,0 +1,25 @@
+<div class='card mt-3' local-class='steps-container' ...attributes>
+  {{#each this.selectionProgress.steps as |step index|}}
+    <div
+      role='button'
+      local-class='{{step.stepClasses}}'
+      {{on 'click' (fn this.transitionIfComplete step index)}}
+    >
+      <div local-class='header'>
+        {{#if step.isComplete}}
+          <div class='checkmark-bullet'></div>
+        {{else}}
+          <div class='number-bullet'>{{inc index}}</div>
+        {{/if}}
+        <span local-class='title'>{{step.title}}</span>
+      </div>
+      {{#if step.isComplete}}
+        {{#each step.displayValues as |displayValue|}}
+          <div local-class='display-values'>
+            {{displayValue}}
+          </div>
+        {{/each}}
+      {{/if}}
+    </div>
+  {{/each}}
+</div>
