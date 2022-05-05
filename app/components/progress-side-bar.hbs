@@ -4,18 +4,19 @@
       role='button'
       local-class='{{step.stepClasses}}'
       {{on 'click' (fn this.transitionIfComplete step index)}}
+      data-test-step={{index}}
     >
-      <div local-class='header'>
+      <div local-class='header' data-test-header>
         {{#if step.isComplete}}
-          <div class='checkmark-bullet'></div>
+          <div class='checkmark-bullet' data-test-checkmark-bullet></div>
         {{else}}
-          <div class='number-bullet'>{{inc index}}</div>
+          <div class='number-bullet' data-test-number-bullet>{{inc index}}</div>
         {{/if}}
-        <span local-class='title'>{{step.title}}</span>
+        <span local-class='title' data-test-title>{{step.title}}</span>
       </div>
       {{#if step.isComplete}}
-        {{#each step.displayValues as |displayValue|}}
-          <div local-class='display-values'>
+        {{#each step.displayValues as |displayValue index|}}
+          <div local-class='display-value' data-test-display-value={{index}}>
             {{displayValue}}
           </div>
         {{/each}}
